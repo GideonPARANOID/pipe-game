@@ -7,7 +7,7 @@
 
 $(function() {
    var game = new Game(7);
-   var DOM = new DOM(game, 'grid');
+   var display = new DOM(game, 'grid');
    
 
 

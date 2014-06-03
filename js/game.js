@@ -43,11 +43,11 @@ Block.STRAIGHT = 'straight';
 Block.BEND = 'bend';
 Block.SLOW = 'slow';
 Block.FAST = 'fast';
-Block.ALARM = 'alarm';
 Block.BREAK = 'break';
+Block.ALARM = 'alarm';
 
 
 
 Block.prototype.getState = function() {
-
+   return '';
 }

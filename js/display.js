@@ -12,14 +12,17 @@ function DOM(game, id) {
    this.game = game;
 
    this.grid = $('#' + id);   
+   this.grid.css({
+      'width' : ((game.size * 60) + 10) + 'px'
+   });
 
    // initialising grid
    for (var x = 0; x < game.size; x++) {
       for (var y = 0; y < game.size; y++) {
-         grid.append('<div />').attr({
+         this.grid.append($('<div />').attr({
             'id'     : x + '-' + y,
-            'class'  : game.getBlockState(x, y)
-         });
+            'class'  : 'block' + game.getBlockState(x, y)
+         }));
       }
    }
 }
