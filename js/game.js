@@ -9,16 +9,16 @@ function Game(size) {
    this.grid = [];
 
    for (var x = 0; x < size; x++) {
-      grid[x] = [];
+      this.grid[x] = [];
 
       for (var y = 0; y < size; y++) {
-         grid[x][y] = new Block();
+         this.grid[x][y] = new Block();
       }
    }
 }
 
 
-Game.prototype.getBlockState(x, y) {
+Game.prototype.getBlockState = function(x, y) {
    return this.grid[x][y].getState();
 }
 
