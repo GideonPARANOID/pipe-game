@@ -3,10 +3,15 @@
  * @author  gideonparanoid
  */
 
+'use strict';
 
-function Game(size) {
+/**
+ * a game
+ */
+function Game(size, speed) {
    this.size = size;
    this.grid = [];
+   this.speed = speed;
 
    for (var x = 0; x < size; x++) {
       this.grid[x] = [];
@@ -32,6 +37,15 @@ function Block(type) {
    this.used = false;
    this.rotation = 0;
 }
+
+// block types
+Block.STRAIGHT = 'straight';
+Block.BEND = 'bend';
+Block.SLOW = 'slow';
+Block.FAST = 'fast';
+Block.ALARM = 'alarm';
+Block.BREAK = 'break';
+
 
 
 Block.prototype.getState = function() {

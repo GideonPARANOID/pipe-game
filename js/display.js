@@ -3,6 +3,8 @@
  * @author gideonparanoid
  */
 
+'use strict';
+
 /**
  * displays the game using the document object model
  */
