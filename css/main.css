@@ -1,0 +1,32 @@
+/**
+ * @created 2014-06-02
+ * @author  gideonparanoid
+ */
+
+
+#game {
+   margin : 5px;
+   width : 500px;
+   height : 600px;
+}
+
+#info {
+   height : 50px;
+   width : 500px;
+   clear : both;
+
+   background-color : #ffffff;
+}
+
+#current {
+   float : right;   
+}
+
+#grid {
+   width : 500px;
+   height : 500px;
+   clear : both;
+   margin : 5px;
+   border : 5px solid black;
+}
+

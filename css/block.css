@@ -1,7 +1,7 @@
-#grid {
-   margin : 5px;
-}
-
+/**
+ * @created 2014-06-02
+ * @author  gideonparanoid
+ */
 
 .block {
    float : left;
@@ -9,6 +9,19 @@
    width : 50px;
    margin : 5px;
    background-color : #eeeeee;
+}
+
+
+.block.rotation090 {
+
+}
+
+.block.rotation180 {
+
+}
+
+.block.rotation270{
+
 }
 
 .block.straight {
