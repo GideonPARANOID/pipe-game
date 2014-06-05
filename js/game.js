@@ -20,20 +20,37 @@ function Game(size, speed) {
    // current block
    this.current = 0;
 
-   for (var x = 0; x < size; x++) {
-      this.grid[x] = [];
-
-      for (var y = 0; y < size; y++) {
-         this.grid[x][y] = new Block();
+   while (!this.validGrid()){ 
+      for (var x = 0; x < size; x++) {
+         this.grid[x] = [];
+   
+         for (var y = 0; y < size; y++) {
+            this.grid[x][y] = new Block();
+         }
       }
    }
+
 }
 
+
+/**
+ * @return  boolean  whether it is possible to solve the grid or not
+ */
+Game.prototype.validGrid = function() {
+   if (this.grid.length != this.size) {
+      return false;
+   }
+   return true;
+
+}
 
 Game.prototype.getBlockState = function(x, y) {
    return this.grid[x][y].getState();
 }
 
+
+///////////////////////////////////////////////////////////////////////////////////////////////////
+// block
 
 /**
  * a grid square
