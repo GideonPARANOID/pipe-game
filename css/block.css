@@ -8,28 +8,41 @@
    height : 50px;
    width : 50px;
    margin : 5px;
+   box-sizing : border-box;
+   
    background-color : #eeeeee;
+
+   border-top : 5px solid black;
 }
 
 
 .block.rotation090 {
-
+   -webkit-transform : rotate(90deg);
+   -moz-transform : rotate(90deg);
+   -o-transform : rotate(90deg);
+   transform : rotate(90deg);
 }
 
 .block.rotation180 {
-
+   -webkit-transform : rotate(180deg);
+   -moz-transform : rotate(180deg);
+   -o-transform : rotate(180deg);
+   transform : rotate(180deg);
 }
 
 .block.rotation270{
-
+   -webkit-transform : rotate(270deg);
+   -moz-transform : rotate(270deg);
+   -o-transform : rotate(270deg);
+   transform : rotate(270deg);
 }
 
 .block.straight {
-
+   border-bottom : 5px solid black;
 }
 
 .block.bend {
-
+   border-left : 5px solid black;
 }
 
 .block.slow {
@@ -41,9 +54,9 @@
 }
 
 .block.break {
-
+   border : 5px solid red;
 }
 
 .block.alarm {
-
+   border : 5px solid red;
 }

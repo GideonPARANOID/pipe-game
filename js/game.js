@@ -42,7 +42,7 @@ function Block(type) {
    this.type = randomType();
    this.revealed = false;
    this.used = false;
-   this.rotation = 0;
+   this.rotation = Math.floor(Math.random() * 4);
 }
 
 // block modifiers
