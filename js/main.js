@@ -5,10 +5,11 @@
 
 'use strict';
 
+// model, view
+var game, display
+
 $(function() {
-   var game = new Game(7);
-   var display = new DOM(game, 'grid');
-   
-
-
+   game = new Game(7);
+   display = new DOM('grid', game.size);
 });
+

@@ -8,19 +8,15 @@
 /**
  * displays the game using the document object model
  */
-function DOM(game, id) {
-   this.game = game;
-
+function DOM(id, size) {
    this.grid = $('#' + id);   
    this.grid.css({
-      'width' : ((game.size * 60) + 10) + 'px'
+      'width' : ((size * 60) + 10) + 'px'
    });
 
-console.log(game.getBlockState(0, 0).unshift('block'));
-
    // initialising grid
-   for (var x = 0; x < game.size; x++) {
-      for (var y = 0; y < game.size; y++) {
+   for (var x = 0; x < size; x++) {
+      for (var y = 0; y < size; y++) {
 
          var classes = game.getBlockState(x, y);
          classes.unshift('block');
@@ -28,13 +24,20 @@ console.log(game.getBlockState(0, 0).unshift('block'));
          this.grid.append($('<div />').attr({
             'id'     : x + '-' + y,
             'class'  : classes.join(' ')
-         }));
+         }).on('click', this.click));
       }
    }
 }
 
 
-DOM.prototype.render = function() {
+DOM.prototype.click = function() {
+   var indexes = $(this).attr('id').split('-');
+   game.activateBlock(indexes[0], indexes[1]);   
+}
 
+
+
+DOM.prototype.render = function() {
+   
 
 }

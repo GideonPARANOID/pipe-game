@@ -10,42 +10,87 @@
  */
 function Game(size, speed) {
    this.size = size;
-   this.grid = [];
    this.speed = speed;
 
-   // where the liquid enters & exists the game, clockwise from origin (this.size * 4)
-   this.start = 0;
-   this.end = 0;
+   // where the liquid enters & exists the game, clockwise from origin (this.size * 4) 
+   this.start = Math.floor(Math.random() * this.size * 4);
+   this.end = this.start + this.size * 2;
 
    // current block
-   this.current = 0;
+   this.current = new Block(Block.CURRENT);
 
-   while (!this.validGrid()){ 
-      for (var x = 0; x < size; x++) {
-         this.grid[x] = [];
-   
-         for (var y = 0; y < size; y++) {
-            this.grid[x][y] = new Block();
-         }
-      }
-   }
+   this.generateValidGrid();
 
+   console.log(this.grid);
 }
 
 
 /**
  * @return  boolean  whether it is possible to solve the grid or not
  */
-Game.prototype.validGrid = function() {
-   if (this.grid.length != this.size) {
+Game.prototype.generateValidGrid = function() {
+   this.grid = [];
+
+/*   while (!function validGrid() {
+    if (this.grid.length != this.size) {
       return false;
    }
    return true;
-
+     
+   }){*/ 
+      for (var x = 0; x < this.size; x++) {
+         this.grid[x] = [];
+   
+         for (var y = 0; y < this.size; y++) {
+            this.grid[x][y] = new Block();
+         }
+      }
+  
 }
 
+
+/**
+ * @param   x        coordinate of the block in the grid
+ * @param   y        coordinate of the block in the grid
+ * @return  array    string constants describing the the state
+ */
 Game.prototype.getBlockState = function(x, y) {
    return this.grid[x][y].getState();
+}
+
+
+/**
+ * @return  array    string constants describing the state  of the current swapped block
+ */
+Game.prototype.getCurrentBlockState = function() {
+   return this.current.getState();
+}
+
+
+/**
+ * @param   x        coordinate of the block in the grid
+ * @param   y        coordinate of the block in the grid
+ */
+Game.prototype.activateBlock = function(x, y) {
+   if (!this.grid[x][y].revealed) {
+      this.grid[x][y].revealed = true;
+   
+   } else if (this.grid[x][y].used) {
+   
+   } else {
+      this.swapBlock(x, y);
+   }
+}
+
+/**
+ * @param   x        coordinate of the block in the grid
+ * @param   y        coordinate of the block in the grid
+ * swaps the block at the passed coordinates with the current block
+ */
+Game.prototype.swapBlock = function(x, y) {
+   var block = this.grid[x][y];
+   this.grid[x][y] = this.current;
+   this.current = block;
 }
 
 
@@ -56,7 +101,7 @@ Game.prototype.getBlockState = function(x, y) {
  * a grid square
  */
 function Block(type) {
-   this.type = randomType();
+   this.type = typeof type == 'undefined' ? randomType() : type;
    this.revealed = false;
    this.used = false;
    this.rotation = Math.floor(Math.random() * 4);
@@ -71,14 +116,16 @@ Block.FAST = 'fast';
 Block.BREAK = 'break';
 Block.ALARM = 'alarm';
 
-Block.REVEALED = 'revealed'
+Block.CURRENT  = 'current';
+
+Block.REVEALED = 'revealed';
 Block.USED = 'used';
 Block.ROTATION = [
    'rotation000',
    'rotation090',
    'rotation180',
    'rotation270'
-]
+];
 
 
 /**
@@ -121,4 +168,5 @@ function randomType() {
 
    return weightedTypes[Math.floor(Math.random() * weightedTypes.length)];
 }
+
 

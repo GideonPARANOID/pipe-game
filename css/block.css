@@ -12,7 +12,7 @@
    
    background-color : #eeeeee;
 
-   border-top : 5px solid black;
+   border-top : 5px solid #000000;
 }
 
 
@@ -38,15 +38,25 @@
 }
 
 .block.straight {
-   border-bottom : 5px solid black;
+   border-top : 25px solid #000000;
+   border-right : 25px solid #eeeeee;
+   border-bottom : 25px solid #000000;
+   border-left : 25px solid #eeeeee;
 }
 
 .block.bend {
-   border-left : 5px solid black;
+   border-top : 25px solid #000000;
+   border-right : 25px solid #eeeeee;
+   border-bottom : 25px solid #eeeeee;
+   border-left : 25px solid #000000;
 }
 
 .block.slow {
-
+   background-color : #000000;
+   border-top : 15px solid #000000;
+   border-right : 15px solid #eeeeee;
+   border-bottom : 15px solid #000000;
+   border-left : 15px solid #eeeeee;
 }
 
 .block.fast {
