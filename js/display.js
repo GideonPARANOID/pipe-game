@@ -21,6 +21,7 @@ function DOM(id, size) {
          var classes = game.getBlockState(x, y);
          classes.unshift('block');
 
+
          this.grid.append($('<div />').attr({
             'id'     : x + '-' + y,
             'class'  : classes.join(' ')
@@ -30,14 +31,16 @@ function DOM(id, size) {
 }
 
 
-DOM.prototype.click = function() {
+DOM.prototype.click = function(event) {
    var indexes = $(this).attr('id').split('-');
    game.activateBlock(indexes[0], indexes[1]);   
+   this.renderBlock(indexes[0], indexes[1]);
 }
 
 
-
-DOM.prototype.render = function() {
-   
-
+DOM.prototype.renderBlock = function(x, y) {
+   var classes = game.getBlockState(x, y);
+   classes.unshift('block');
+   $('#' + x + '-' + y).attr('class', classes.join(' '));
 }
+

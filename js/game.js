@@ -72,8 +72,8 @@ Game.prototype.getCurrentBlockState = function() {
  * @param   y        coordinate of the block in the grid
  */
 Game.prototype.activateBlock = function(x, y) {
-   if (!this.grid[x][y].revealed) {
-      this.grid[x][y].revealed = true;
+   if (this.grid[x][y].hidden) {
+      this.grid[x][y].hidden = false;
    
    } else if (this.grid[x][y].used) {
    
@@ -102,7 +102,7 @@ Game.prototype.swapBlock = function(x, y) {
  */
 function Block(type) {
    this.type = typeof type == 'undefined' ? randomType() : type;
-   this.revealed = false;
+   this.hidden = true;
    this.used = false;
    this.rotation = Math.floor(Math.random() * 4);
 }
@@ -118,7 +118,7 @@ Block.ALARM = 'alarm';
 
 Block.CURRENT  = 'current';
 
-Block.REVEALED = 'revealed';
+Block.HIDDEN = 'hidden';
 Block.USED = 'used';
 Block.ROTATION = [
    'rotation000',
@@ -135,8 +135,8 @@ Block.prototype.getState = function() {
    var state = [this.type, Block.ROTATION[this.rotation]];
    
    switch (true) {
-      case this.revealed : 
-         state.push(Block.REVEALED);
+      case this.hidden : 
+         state.push(Block.HIDDEN);
       case this.used :
          state.push(Block.USED);
    }

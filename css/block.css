@@ -15,6 +15,11 @@
    border-top : 5px solid #000000;
 }
 
+.block.hidden {
+   border : 5px solid #eeeeee !important;
+   background-color : #000000 !important;
+}
+
 
 .block.rotation090 {
    -webkit-transform : rotate(90deg);

@@ -6,7 +6,7 @@
 'use strict';
 
 // model, view
-var game, display
+var game, display;
 
 $(function() {
    game = new Game(7);
